@@ -1,0 +1,42 @@
+<%- include('templates/header') -%>
+
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/mahasiswa">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tambah Data Prodi</li>
+    </ol>
+  </nav>
+
+  <% if (error !== null) { %>
+    <div class="alert alert-danger"><%= error.message %></div>
+  <% } %>
+  
+  <form action="/prodi/tambah" class="form-group p-4 shadow rounded" method="post">
+    <label for="nama">Prodi</label>
+    <input type="text" name="prodi" id="prodi" placeholder="Masukkan nama prodi" required class="form-control">
+    <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+    <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+  </form>
+
+  <table class="table shadow rounded">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID Prodi</th>
+        <th scope="col">Prodi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach((value, index) => { %>
+        <tr>
+          <th scope="row"><%= ++index %></th>
+          <td><%= value.id_prodi %> </td>
+          <td><%= value.prodi %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('templates/footer') -%>

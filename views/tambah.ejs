@@ -1,0 +1,28 @@
+  <%- include('templates/header') -%>
+  
+  <div class="container mt-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item text-decoration-none"><a href="/mahasiswa">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tambah Data</li>
+      </ol>
+    </nav>
+    
+    <form action="/mahasiswa/tambah" class="form-group p-4 shadow rounded" method="post">
+      <label for="nama">Nama</label>
+      <input type="text" name="nama" id="nama" placeholder="Masukkan nama mahasiswa" class="form-control">
+      <label for="nim">NIM</label>
+      <input type="text" name="nim" id="nim" placeholder="Masukkan NIM mahasiswa" class="form-control">
+      <label for="prodi">Prodi</label>
+      <select name="prodi" class="form-control" id="prodi">
+        <option value="">-- Pilih Prodi --</option>
+        <% prodi.forEach(data => { %>
+          <option value="<%= data.id_prodi %>"><%= data.prodi %></option>
+          <% }) %>
+      </select>
+      <button type="submit" class="btn btn-success mt-3">Tambah Data</button>
+      <a href="/mahasiswa/" class="btn btn-outline-warning mt-3">Kembali</a>
+    </form>
+  </div>
+
+  <%- include('templates/footer') -%>

@@ -1,0 +1,29 @@
+<%- include('templates/header') -%>
+  
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-decoration-none"><a href="/mahasiswa">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
+    </ol>
+  </nav>
+  
+  <form action="/mahasiswa/edit" class="form-group p-4 shadow rounded" method="post">
+    <input type="hidden" name="id" id="id" value="<%= data.id %>">
+    <label for="nama">Nama</label>
+    <input type="text" value="<%= data.nama %>" name="nama" id="nama" placeholder="Masukkan nama mahasiswa" class="form-control">
+    <label for="nim">NIM</label>
+    <input type="text" value="<%= data.nim %>" name="nim" id="nim" placeholder="Masukkan NIM mahasiswa" class="form-control">
+    <label for="prodi">Prodi</label>
+    <select name="prodi" class="form-control" id="prodi">
+      <option value="">-- Pilih Prodi --</option>
+      <% prodi.forEach(value => { %>
+        <option <%= (value.prodi == data.prodi) ? 'selected' : ''; %>  value="<%= value.id_prodi %>"><%= value.prodi %></option>
+      <% }) %>
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Edit Data</button>
+    <a href="/mahasiswa" class="btn btn-outline-danger mt-3">Kembali</a>
+  </form>
+</div>
+
+<%- include('templates/footer') -%>

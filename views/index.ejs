@@ -1,0 +1,47 @@
+  <%- include('templates/header') -%> 
+  
+  <div class="jumbotron">
+    <div class="container">
+      <h3 class="font-weight-bold">Data Mahasiswa</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sed eum qui, earum minus voluptatum hic laboriosam veniam corporis reiciendis quidem rerum, laudantium suscipit quam nam amet officia molestiae modi.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="/mahasiswa/tambah" class="btn btn-outline-success mb-3">Tambah Data</a>
+    <table class="table">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nama</th>
+          <th scope="col">NIM</th>
+          <th scope="col">Prodi</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length !== 0) { %>
+          <% data.forEach((value, index) => { %>
+            <tr>
+              <th scope="row"><%= ++index %></th>
+              <td><%= value.nama %></td>
+              <td><%= value.nim %></td>
+              <td><%= value.prodi %></td>
+              <td>
+                <a href="/mahasiswa/edit/<%= value.nim %> " class="badge badge-pill badge-primary">edit</a>
+                <a href="/mahasiswa/delete/<%= value.nim %>" class="badge badge-pill badge-danger">delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="5" style="text-align: center;">
+              No Data Mahasiswa
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <%- include('templates/footer') -%>
